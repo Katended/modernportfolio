@@ -29,6 +29,8 @@
     <script src="assets/html5shiv/html5shiv.js"></script>
     <script src="assets/respond/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
 </head>
 
 <body id="top">
@@ -51,6 +53,7 @@
               <a href="index.html#home"><i class="fa fa-fw fa-home"></i><span>Home</span></a>
               <a href="index.html#about"><i class="fa fa-fw fa-quote-left"></i><span>About</span></a>             
               <a href="index.html#projects"><i class="fa fa-fw fa-picture-o"></i><span>Portfolio</span></a>
+              <a href="index.html#testimonies"><i class="fa fa-fw fa-picture-o"></i><span>Testimonies</span></a>
               <a href="index.html#contact"><i class="fa fa-fw fa-envelope-o"></i><span>Contact</span></a>
             </div>
           </nav>
@@ -75,8 +78,8 @@
               <span>KATEND<span style="color:#ffd700">E</span></span>
             </h1><!-- Title -->
             <h3 class="animated fadeInUp delay-05s"><span>FULL-STACK WEB DEVELOPER</span></h3>
-            <h3 class="animated fadeInUp delay-05s"><span class="stack">React, Ruby on Rails, Laravel,Vue.js,<br> Rails, JavaScript, Git, and MySQL</span></h3>
-            <a class="outline-btn-main"  href="index.html#contact"> LET'S TALK</a>
+            <h3 class="animated fadeInUp delay-05s"><span class="stack">React, Ruby on Rails, Laravel,<br>Vue.js, Rails, JavaScript,<br> Git, and MySQL</span></h3>
+            <a   href="index.html#contact"> LET'S TALK</a><br/><br/><a download="David_Katende_Portfolio.pdf" href="img/David_Katende_Portfolio.pdf"> DOWNLOAD CV</a>
             <!-- Text Rotator -->
           </div>
         </div>
@@ -103,11 +106,11 @@
   <!-- ==========================
         ABOUT SECTION  
         =========================== -->
-  <section class="intro text-center section-padding color-bg" id="about">
+  <section class="intro text-center section-padding color-bg" >
     <div class="container">
       <!-- WELCOME TEXT -->
       <div class="row">
-        <div class="col-md-8 col-md-offset-2 wp1">
+        <div class="col-md-8 col-md-offset-2 wp1" id="about">
           <h1 class="arrow">A little <span>about</span> me</h1><!-- Headline -->
           <!-- about / welcome text -->
           <p>I design and develop web apps that are beautiful, intuitive, and accessible. I am passionate about design and web
@@ -264,8 +267,7 @@
       </div>
       <div class="col-md-6 about-text">
         <h6>Bookstore</h6><!-- headline-->
-        <p>This is bookstore app built with JavaScript (ES6). A user can add/remove books using a
-        Bookstore API. It splits the codebase into modules for easy management and scaling.</p><br><!-- About Text 1 -->
+        <p>A React, Redux app that stores lists of books in a redux store and performs post and delete actions to the datastore and to a an open Bookstore API.The code is split into modules for easy scaling.</p><br><!-- About Text 1 -->
         <a href="https://github.com/Katended/book-store" class="weight-outline-btn">GIT</a>
         <a href="https://bookstore-w15d.onrender.com//" class="weight-outline-btn">LIVE DEMO</a>
       </div>
@@ -296,8 +298,10 @@
   <div class="spacer-cta text-center">
    
           <a href="index.html#contact" class="outline-btn">LET'S TALK</a>
+          <a href="index.html#contact" class="outline-btn">DOWNLOAD CV</a>
   
   </div>
+
   <!-- ==========================
         CUSTOM SPACER END
         =========================== -->
@@ -309,7 +313,7 @@
       <div class="row">
         <div class="col-md-12 text-center">
           <BR><br /><br />
-          <h1 class="arrow">WHAT OTHERS HAVE <span>SAID</span></h1>
+          <h1 class="arrow" id="testimonies">WHAT OTHERS HAVE <span>SAID</span></h1>
         </div>
       </div>
       <div class="col-md-12 nopadding about-text text-center">
@@ -385,7 +389,7 @@
         <div class="col-md-4">
           <div class="dark-box box-hover">
             <h2><i class="fa fa-mobile"></i><span>Phone</span></h2>
-            <p>+256 704 799 839, +256 773 393 96099</p>
+            <p>+256 704 799 839 <br/> +256 773 393 96099</p>
           </div>
         </div>
         <!-- E-Mail Box -->
@@ -401,7 +405,7 @@
        
         <!-- Contact Form -->
         <div class="col-md-12 contact ">
-          <form role="form" onSubmit="sendEmail()">
+          <form role="form" id="myForm">
             <!-- Name -->
            
               <div class="col-md-6">
@@ -428,8 +432,8 @@
               <textarea class="form-control"  name="message" placeholder="Write you message here..." style="height:232px;"></textarea>
             </div>
             <!-- Subtmit Button -->
-            <button type="submit" class="btn btn-send">
-              Send message
+            <button type="submit" id="submit" class="btn btn-send">
+              SEND
             </button>
           </form>
         </div>
@@ -495,9 +499,7 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeKBBPJTG3v5w3cNPAgM6ZsJiPyL1mP_o&amp;sensor=false"></script>
   <!-- Theme JavaScript Core -->
   <script src="js/main.js"></script>
-  <script src="js/script.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-  </script>
+  <script src="js/script.js"></script> 
   <!-- TEXT ROTATOR SETTINGS -->
   <script type="text/javascript">
     $(".rotate").textrotator({
@@ -507,22 +509,43 @@
     });
   </script>
 <script type="text/javascript">
-  const sendEmail = (e) => {
-    e.preventDefault()
-    
-    var formData = new FormData(this);
 
-    emailjs
-      .sendForm('service_74t8zdm', 'template_e3d8s2l', formData, 'GHdWyIfCMBbhSjXjW')
+    (function () {
+      emailjs.init("GHdWyIfCMBbhSjXjW");
+    })();
+
+      document.getElementById('myForm').addEventListener('submit', function(event) {
+
+      event.preventDefault();     
+      const btn = document.getElementById('submit');
+      btn.textContent ='SENDING...';
+      emailjs.sendForm('service_74t8zdm', 'template_e3d8s2l', '#myForm', "GHdWyIfCMBbhSjXjW")
       .then(function (response) {
-        form.current.reset();
-        alert('Message successfully sent!');
+        document.getElementById('myForm').reset();
+        btn.textContent = 'SEND';
+        alert('Message successfully sent!');        
       }, function (error) {
-        alert('Message couldnt be sent.');
-      }).finally(() => {        
-      });
+        alert('Failed to send message!'); 
+        console.log('FAILED...', error);
+      });    
+    });
 
-  }
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+    
+  //   var formData = new FormData(this);
+
+  //   emailjs
+  //     .sendForm('service_74t8zdm', 'template_e3d8s2l', formData, 'GHdWyIfCMBbhSjXjW')
+  //     .then(function (response) {
+  //       form.current.reset();
+  //       alert('Message successfully sent!');
+  //     }, function (error) {
+  //       alert('Message couldnt be sent.');
+  //     }).finally(() => {        
+  //     });
+
+  // }
 </script>
 </body>
 

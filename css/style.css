@@ -29,99 +29,6 @@
 }
 
 /* ///////////////////////////////////////////////////////////////////// 
-// end perpetive
-/////////////////////////////////////////////////////////////////////*/
-
-/* 
-** Change this if you need to modify
-** the amount of lines displayed
-*/
-:root{
-	--total-lines: 6;
-	-o-animation: 29px;
-		--clip-height: 50px;
-		--line-height: --clip-height - 5px;
-}
-
-
-
-/*
-** Leave these unless you want
-** to open a whole can of worms
-*/
-/*
-** Apply styles to the parent element
-*/
-.Words {
-	margin: 0 auto;
-	padding: 80px 0;
-	font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-	font-size: 68px;
-	font-weight: 900;
-	letter-spacing: -2px;
-	text-transform: uppercase;
-	// Sort out nasty text fuzz
-	transform: translate3d(0, 0, 0);
-	-webkit-font-smoothing: antialiased;
-	-webkit-font-kerning: normal;
-	-webkit-text-size-adjust: 100%;
-}
-
-
-/*
-** Apply common styles to each line of text
-*/
-.Words-line {
-	height: $clip-height;
-	overflow: hidden;
-	position: relative;
-
-	// Change the perspective of each alternating line
-	&:nth-child(odd) {
-		transform: skew(60deg, -30deg) scaleY(.66667);
-	}
-
-	&:nth-child(even) {
-		transform: skew(0deg, -30deg) scaleY(1.33333);
-	}
-
-	// Loop over the total lines and apply a left offset
-	@for $i from 1 through $total-lines+1 {
-		&:nth-child(#{$i}) {
-			left: $left-offset * $i;
-		}
-	}
-}
-
-
-/*
-** Fine-grained text styles
-*/
-p {
-	height: $clip-height;
-	line-height: $line-height;
-	padding: 0 10px;
-	transition: all .4s ease-in-out;
-	transform: translate3d(0, 0, 0);
-	vertical-align: top;
-	white-space: nowrap;
-}
-
-
-/*
-** The hover interaction
-*/
-.Words:hover {
-	p {
-		transform: translate3d(0, -($clip-height), 0);
-	}
-}
-
-/* ///////////////////////////////////////////////////////////////////// 
-// end perpetive
-/////////////////////////////////////////////////////////////////////*/
-
-/* ///////////////////////////////////////////////////////////////////// 
 // 03 - Preloader
 /////////////////////////////////////////////////////////////////////*/
 
@@ -135,11 +42,6 @@ p {
     overflow:visible;
     background: #fff url('../img/preloader.gif') no-repeat center center;
 }
-
-
-
-
-
 /* ==========================================================================
 	Global Styles
 ========================================================================== */
@@ -148,13 +50,13 @@ a {
 	-webkit-transition:all 0.5s;
 	-moz-transition:all 0.5s;
 	-o-transition:all 0.5s;
-	transition:all 0.5s;
-	border-bottom: 1px dashed;
-	outline:none!important;
+	transition:all 0.5s;	
+	
 }
-a:hover,a:focus,a:active {
-	color:#0D0D0D;
+a:hover {
+	color: #E04343;
 	text-decoration:none;
+	font-weight: 600;	
 	outline:none!important;
 }
 p {
@@ -193,10 +95,10 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 }
 audio,canvas,video {
 	display:inline-block;
-	*display:inline;
-	*zoom: 1;
+	display:inline;
+	zoom: 1;
 }
-* Remove excess height in iOS 5 devices. */
+
 audio:not([controls]) {
 	display:none;
 	height:0;
@@ -360,9 +262,9 @@ legend {
 }
 button,input,select,textarea {
 	font-size:100%;
-	/margin:0;
+	margin:0;
 	vertical-align:baseline;
-	*vertical-align:middle;
+	vertical-align:middle;
 }
 button,input {
 	line-height:normal;
@@ -370,7 +272,7 @@ button,input {
 button,html input[type="button"],input[type="reset"],input[type="submit"] {
 	-webkit-appearance:button;
 	cursor:pointer;
-	*overflow:visible;
+	overflow:visible;
 }
 button[disabled],input[disabled] {
 	cursor:default;
@@ -575,19 +477,17 @@ table {
 }
 /* ==========================================================================Hero========================================================================== */
 .hero {
-	background: url('../img/header-bg.jpg') right bottom no-repeat;
+	background: url('../img/header-bg.png') center bottom no-repeat;
 	background-size: contain;
 	padding:40px 0 40px 0;
-	height:auto;
+	background-position: 70% 40%;
+	height:auto ;	
 	background-color: #FBFBFB;
-}
-h1 {
-	background-image: url('img/tech/giphy.gif');
-		background-size: cover;
-		color: transparent;
-		-moz-background-clip: text;
-		-webkit-background-clip: text;
-		text-transform: uppercase;
+
+	img{
+		width:100%;
+		height:100%;
+	}
 }
 .hero h1 {
 	font-size: 60px;
@@ -595,7 +495,6 @@ h1 {
 	margin: 0;
 	font-weight: 600;
 	line-height: 60px;
-	
 	
 }
 .hero h1 span {
@@ -616,7 +515,7 @@ h1 {
 	margin: 0;
 	padding: 0;
 	opacity: 0.5;
-	color: #a1a9b0;	
+	color: #6a6a6a;	
 	letter-spacing: 2px;
 	line-height: 10px;
 }
@@ -769,7 +668,7 @@ h1.arrow span {
 .about-text h1 {
 	text-transform:uppercase;
 	font-size:24px;
-	color: #8C8C8C;
+	color: #747474;
 }
 .color-bg h1.arrow span {
     color: #FFE800;
@@ -791,7 +690,7 @@ h1.arrow span {
 	color:#fff;
 }
 .features-wrapper {
-	margin:70px 0 0;
+	margin:40px 0 0;
 }
 i.respons {
 	position:relative;
@@ -1009,15 +908,21 @@ img.grayscale:hover {
 }
 /* ==========================================================================CTA========================================================================== */
 .spacer-cta {
-	background-color: #E04343;
+	/* background-color: #E04343; */
 	padding:10px 0;
+
+	
+}
+
+.spacer-cta a {
+	background: #E04343;
+	border:1px solid  #E04343;
 }
 .outline-btn {
 	display:inline-block;
 	padding:13px 20px;
-	color: #FFE801;
-	border: solid 1px #FFE801;
-	border-radius: 125px;
+	color:whitesmoke;
+	border:  1px solid #E04343;	
 	text-transform:uppercase;
 	font-weight:bold;
 	letter-spacing:1px;
@@ -1341,13 +1246,31 @@ ul.slides li span img {
 
 /** Responsive fixes **/
 @media screen and (max-width:767px) {
+
+	.hero {
+			margin-top: 20%;
+			background: url('../img/header-bg.png') right bottom no-repeat;
+			background-size: contain;	
+			background-size:74%;
+		}
+
 	.inner {
-    padding-top: 10px;
-    text-align: center;
+		padding-top:0;
+		text-align: left;
+		margin-left:20px;
+	}
+	.hero h1 {			
+			font-size: 40px;
+			letter-spacing: 1px;
+			margin: 0;
+			font-weight: 600;
+			line-height: 35px;	
 	}
 
 	.hero h3 {
-	    letter-spacing: 10px;
+	    letter-spacing: 4px;
+		font-size: 16px;
+		line-height: 30px;
 	}
 
 
