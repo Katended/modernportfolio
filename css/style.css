@@ -32,7 +32,7 @@
 // 03 - Preloader
 /////////////////////////////////////////////////////////////////////*/
 :root{
-	--primary-color:#8a8e91;
+	--primary-color:#2e3031;
 }
 #preloader {
     position:fixed;
